@@ -4,19 +4,20 @@ Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses
 
 modified by Yihao Zhao
 """
+import torch
 from utils import get_all_data_loaders, prepare_sub_folder, write_html, write_loss, get_config, write_2images, Timer
 import argparse
 from torch.autograd import Variable
 from trainer import aclgan_Trainer
 import torch.backends.cudnn as cudnn
-import torch
+
 try:
     from itertools import izip as zip
 except ImportError: # will be 3.x series
     pass
 import os
 import sys
-import tensorboardX
+from torch.utils.tensorboard import SummaryWriter
 import shutil
 
 parser = argparse.ArgumentParser()
@@ -55,7 +56,7 @@ def get_parameter_number(net):
 
 # Setup logger and output folders
 model_name = os.path.splitext(os.path.basename(opts.config))[0]
-train_writer = tensorboardX.SummaryWriter(os.path.join(opts.output_path + "/logs", model_name))
+train_writer = SummaryWriter(os.path.join(opts.output_path + "/logs", model_name))
 output_directory = os.path.join(opts.output_path + "/outputs", model_name)
 checkpoint_directory, image_directory = prepare_sub_folder(output_directory)
 shutil.copy(opts.config, os.path.join(output_directory, 'config.yaml')) # copy config file to output folder

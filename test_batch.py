@@ -128,7 +128,7 @@ if opts.trainer == 'aclgan':#    # Start testing
 #                all_preds.append(pred)
 #            if opts.compute_CIS:
 #                cur_preds.append(pred)
-#            # path = os.path.join(opts.output_folder, 'input{:03d}_output{:03d}.jpg'.format(i, j))
+#            # path = os.path.join(opts.output_folder, 'input{:03d}_output{:03d}.png'.format(i, j))
 #            basename = os.path.basename(names[1])
 #            path = os.path.join(opts.output_folder+"_%02d"%j,basename)
 #            if not os.path.exists(os.path.dirname(path)):
@@ -157,7 +157,7 @@ if opts.trainer == 'aclgan':#    # Start testing
             outputs = (outputs + 1) / 2.
             outputs_hat = (outputs_hat+1)/2.
             outputs_til = (outputs_til+1)/2.
-            # path = os.path.join(opts.output_folder, 'input{:03d}_output{:03d}.jpg'.format(i, j))
+            # path = os.path.join(opts.output_folder, 'input{:03d}_output{:03d}.png'.format(i, j))
             basename = os.path.basename(names[1])
             path = os.path.join(opts.output_folder+"/_%02d_ori"%j,basename)
             path_bar = os.path.join(opts.output_folder+"/_%02d_bar"%j,basename)
@@ -191,7 +191,7 @@ if opts.trainer == 'aclgan':#    # Start testing
                 CIS.append(entropy(pyx, py))
         if not opts.output_only:
             # also save input images
-            vutils.save_image(images.data, os.path.join(opts.output_folder, 'input{:03d}.jpg'.format(i)), padding=0, normalize=True)
+            vutils.save_image(images.data, os.path.join(opts.output_folder, 'input{:03d}.png'.format(i)), padding=0, normalize=True)
     print(count_max)
     if opts.compute_IS:
         all_preds = np.concatenate(all_preds, 0)

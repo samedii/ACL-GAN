@@ -121,7 +121,7 @@ def __write_images(image_outputs, display_image_num, file_name):
 
 def write_2images(image_outputs, display_image_num, image_directory, postfix):
     n = len(image_outputs)
-    __write_images(image_outputs[0:n], display_image_num, '%s/gen_a2b_%s.jpg' % (image_directory, postfix))
+    __write_images(image_outputs[0:n], display_image_num, '%s/gen_a2b_%s.png' % (image_directory, postfix))
 
 
 def prepare_sub_folder(output_directory):
@@ -159,14 +159,14 @@ def write_html(filename, iterations, image_save_iterations, image_directory, all
     <body>
     ''' % os.path.basename(filename))
     html_file.write("<h3>current</h3>")
-    write_one_row_html(html_file, iterations, '%s/gen_a2b_train_current.jpg' % (image_directory), all_size)
-    write_one_row_html(html_file, iterations, '%s/gen_b2a_train_current.jpg' % (image_directory), all_size)
+    write_one_row_html(html_file, iterations, '%s/gen_a2b_train_current.png' % (image_directory), all_size)
+    write_one_row_html(html_file, iterations, '%s/gen_b2a_train_current.png' % (image_directory), all_size)
     for j in range(iterations, image_save_iterations-1, -1):
         if j % image_save_iterations == 0:
-            write_one_row_html(html_file, j, '%s/gen_a2b_test_%08d.jpg' % (image_directory, j), all_size)
-            write_one_row_html(html_file, j, '%s/gen_b2a_test_%08d.jpg' % (image_directory, j), all_size)
-            write_one_row_html(html_file, j, '%s/gen_a2b_train_%08d.jpg' % (image_directory, j), all_size)
-            write_one_row_html(html_file, j, '%s/gen_b2a_train_%08d.jpg' % (image_directory, j), all_size)
+            write_one_row_html(html_file, j, '%s/gen_a2b_test_%08d.png' % (image_directory, j), all_size)
+            write_one_row_html(html_file, j, '%s/gen_b2a_test_%08d.png' % (image_directory, j), all_size)
+            write_one_row_html(html_file, j, '%s/gen_a2b_train_%08d.png' % (image_directory, j), all_size)
+            write_one_row_html(html_file, j, '%s/gen_b2a_train_%08d.png' % (image_directory, j), all_size)
     html_file.write("</body></html>")
     html_file.close()
 

@@ -110,11 +110,11 @@ with torch.no_grad():
                 outputs = focus_translation(img, image, mask)
                 outputs_mask = mask.expand(-1,3,-1,-1)
             outputs = (outputs + 1) / 2.
-            path = os.path.join(opts.output_folder, 'output{:03d}.jpg'.format(j))
+            path = os.path.join(opts.output_folder, 'output{:03d}.png'.format(j))
             vutils.save_image(outputs.data, path, padding=0, normalize=True)
             if config['focus_loss']>0:
-                path_mask = os.path.join(opts.output_folder, 'output{:03d}_mask.jpg'.format(j))
-                path_img = os.path.join(opts.output_folder, 'output{:03d}_img.jpg'.format(j))
+                path_mask = os.path.join(opts.output_folder, 'output{:03d}_mask.png'.format(j))
+                path_img = os.path.join(opts.output_folder, 'output{:03d}_img.png'.format(j))
                 if not os.path.exists(os.path.dirname(path_mask)):
                     os.makedirs(os.path.dirname(path_mask))
                 if not os.path.exists(os.path.dirname(path_img)):
@@ -128,5 +128,5 @@ with torch.no_grad():
 
     if not opts.output_only:
         # also save input images
-        vutils.save_image(image.data, os.path.join(opts.output_folder, 'input.jpg'), padding=0, normalize=True)
+        vutils.save_image(image.data, os.path.join(opts.output_folder, 'input.png'), padding=0, normalize=True)
 

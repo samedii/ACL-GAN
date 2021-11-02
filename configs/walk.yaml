@@ -37,6 +37,7 @@ D_update: 1                   # weight of z in council loss
 
 # model options
 gen:
+  # dim: 64                     # number of filters in the bottommost layer
   dim: 64                     # number of filters in the bottommost layer
   mlp_dim: 256                # number of filters in MLP
   style_dim: 8                # length of style code
@@ -46,10 +47,11 @@ gen:
   n_res: 4                    # number of residual blocks in content encoder/decoder
   pad_type: reflect           # padding type [zero/reflect]
 dis:
+  # dim: 64                     # number of filters in the bottommost layer
   dim: 64                     # number of filters in the bottommost layer
   norm: none                  # normalization layer [none/bn/in/ln]
   activ: lrelu                # activation function [relu/lrelu/prelu/selu/tanh]
-  n_layer: 4                  # number of layers in D
+  n_layer: 3                  # number of layers in D
   gan_type: lsgan             # GAN loss [lsgan/nsgan]
   num_scales: 3               # number of scales
   pad_type: reflect           # padding type [zero/reflect]
@@ -58,8 +60,11 @@ dis:
 input_dim_a: 3                              # number of image channels [1/3]
 input_dim_b: 6                              # number of image channels [1/3]
 num_workers: 8                              # number of data loading threads
-new_size: 256                               # first resize the shortest image side to this size
-crop_image_height: 256                      # random crop image of this height
-crop_image_width: 256                       # random crop image of this width
-data_root: ./datasets/male2female      # dataset folder location
+# new_size: 256                               # first resize the shortest image side to this size
+# crop_image_height: 256                      # random crop image of this height
+# crop_image_width: 256                       # random crop image of this width
+new_size: 36                               # first resize the shortest image side to this size
+crop_image_height: 36                      # random crop image of this height
+crop_image_width: 36                       # random crop image of this width
+data_root: ./datasets/walk2      # dataset folder location
 data_kind: male2female
